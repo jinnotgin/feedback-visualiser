@@ -1,0 +1,71 @@
+export default {
+	name: "<name of individual>",
+	period: "<time period>",
+	categories: [
+		{
+			name: "General Assessment",
+			questions: [
+				{
+					type: "graph",
+					data: {
+						title:
+							"How would you rate the overall performance of {name} on a scale of 1 to 5?",
+						labels: ["1", "2", "3", "4", "5"],
+						responses: [0, 0, 1, 2, 1],
+					},
+				},
+				{
+					type: "text",
+					data: {
+						title:
+							"In your opinion, what are some of the key strengths of {name}?",
+						responses: [
+							"hardworking, always ready to contribute",
+							"Pay great attentions to details",
+							"Easy to work with",
+							"Quick response when clarifying details",
+						],
+					},
+				},
+			],
+		},
+		{
+			name: "Discovery, Analysis & Sense-Making",
+			questions: [
+				{
+					type: "graph",
+					data: {
+						title:
+							"How effectively does {name} understand & analyse an epic's rationale & requirements?",
+						labels: ["1", "2", "3", "4", "5"],
+						responses: [0, 0, 1, 2, 3],
+					},
+				},
+				{
+					type: "graph",
+					data: {
+						title:
+							"How effectively does {name} sharpen (e.g., edge cases, find inconsistencies, detect irrationality) epics and user stories?",
+						labels: ["1", "2", "3", "4", "5"],
+						responses: [0, 0, 0, 0, 0],
+					},
+				},
+				{
+					type: "graph",
+					data: {
+						title: "How well does {name} understand the domain knowledge?",
+						labels: ["Not Sure", "1", "2", "3", "4", "5"],
+						responses: [1, 0, 0, 3, 2, 1],
+					},
+				},
+				{
+					type: "text",
+					data: {
+						title: "Please provide some elaboration for your above ratings!",
+						responses: ["Elbaoration abc"],
+					},
+				},
+			],
+		},
+	],
+};
