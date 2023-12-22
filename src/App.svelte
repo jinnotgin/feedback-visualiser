@@ -1,40 +1,49 @@
-
 <script>
-  import SurveyContainer from './lib/SurveyContainer.svelte';
-  import defaultData from '#assets/data.json';
+	import SurveyContainer from "./lib/SurveyContainer.svelte";
+	import defaultData from "#assets/data.json";
 
-  let data = defaultData; // Initialize data variable with default data
+	let data = defaultData; // Initialize data variable with default data
+	let isDragOver = false; // Variable to track drag state
 
-  async function getFileData(file) {
-    try {
-      let response = await fetch(URL.createObjectURL(file)); // URL.createObjectURL creates a blob url from the file object
-      return await response.json(); // Get the JSON content of the file
-    } catch (err) {
-      console.error('Error:', err);
-    }
-  };
+	async function getFileData(file) {
+		try {
+			let response = await fetch(URL.createObjectURL(file)); // URL.createObjectURL creates a blob url from the file object
+			return await response.json(); // Get the JSON content of the file
+		} catch (err) {
+			console.error("Error:", err);
+		}
+	}
 
-  function handleDragOver(event){
-    event.preventDefault();
-    event.dataTransfer.dropEffect = 'move';
-  };
+	function handleDragOver(event) {
+		console.log("dragover");
+		event.preventDefault();
+		event.dataTransfer.dropEffect = "move";
+		isDragOver = true; // Set isDragOver to true when dragover
+	}
 
-  async function handleDrop(event) {
-    event.preventDefault();
+	async function handleDrop(event) {
+		event.preventDefault();
+		isDragOver = false; // Reset isDragOver when drop
 
-    // Get the file that was dropped
-    let file = event.dataTransfer.files[0];
+		// Get the file that was dropped
+		let file = event.dataTransfer.files[0];
 
-    if(file && file.name.endsWith('.json')){
-      const fileData = await getFileData(file);
-      // ValidateData before updating the data variable
-      if (fileData && fileData.name && fileData.period && fileData.categories) {
-        data = fileData;
-      } else {
-        console.error('Invalid JSON file');
-      }
-    }
-  };
+		if (file && file.name.endsWith(".json")) {
+			const fileData = await getFileData(file);
+			// ValidateData before updating the data variable
+			if (fileData && fileData.name && fileData.period && fileData.categories) {
+				data = fileData;
+			} else {
+				console.error("Invalid JSON file");
+			}
+		}
+	}
+
+	function handleDragLeave(event) {
+		console.log("dragleave");
+		event.preventDefault();
+		isDragOver = false; // Reset isDragOver when drag leaves
+	}
 </script>
 
 <div
