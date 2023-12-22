@@ -37,6 +37,22 @@
   };
 </script>
 
-<main class="max-w-screen-md mx-auto my-6" on:dragover={handleDragOver} on:drop={handleDrop} >
-  <SurveyContainer surveyData={data}/>
+<div
+	role="button"
+	tabindex="0"
+	on:dragover={handleDragOver}
+	on:drop={handleDrop}
+	on:dragleave={handleDragLeave}
+	class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white text-4xl z-10 transition-all duration-300 pointer-events-none' {isDragOver
+		? ''
+		: 'hidden'}"
+>
+	Drop your file here
+</div>
+
+<main
+	class="max-w-screen-md mx-auto my-6 relative"
+	on:dragover={handleDragOver}
+>
+	<SurveyContainer surveyData={data} />
 </main>
