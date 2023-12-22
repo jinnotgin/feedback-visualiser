@@ -10,3 +10,7 @@
 {#each surveyData.categories as category}
   <SurveyCategory {category} name={surveyData.name} />
 {/each}
+
+<svelte:head>
+  <title>{surveyData.name} {surveyData.period}: Feedback Visualiser</title>
+</svelte:head>
