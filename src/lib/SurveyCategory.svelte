@@ -1,4 +1,3 @@
-<!-- SurveyCategory.svelte -->
 <script>
   import SurveyQuestion from '#lib/SurveyQuestion.svelte';
   
