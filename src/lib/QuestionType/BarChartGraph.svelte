@@ -8,7 +8,7 @@
 			height: 250,
 		},
 		fill: {
-			colors: ["#5114ad"],
+			colors: ["#00544f"],
 		},
 		tooltip: {
 			enabled: false,
