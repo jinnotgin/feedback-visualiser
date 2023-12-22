@@ -4,7 +4,7 @@
 
 	export let question, name;
 
-	const questionTitleWithName = question.data.title.replace("{name}", name);
+	$: questionTitleWithName = question.data.title.replace("{name}", name);
 </script>
 
 <div class="">
