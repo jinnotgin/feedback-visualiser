@@ -2,13 +2,15 @@
 	import ApexCharts from "apexcharts";
 	export let data;
 
-	var options = {
+	let barChartRef;
+
+	let options = {
 		chart: {
 			type: "bar",
 			height: 250,
 		},
-		fill: {
-			colors: ["#00544f"],
+		fill:{
+			colors: [], // will be updated by chart function
 		},
 		tooltip: {
 			enabled: false,
@@ -24,6 +26,8 @@
 	};
 
 	function chart(node) {
+		const computedColor = getComputedStyle(node).color;
+		options.fill.colors = [computedColor];
 		const chart = new ApexCharts(node, options);
 		chart.render();
 
@@ -35,4 +39,4 @@
 	}
 </script>
 
-<div use:chart></div>
+<div class="text-teal-800" use:chart></div>
